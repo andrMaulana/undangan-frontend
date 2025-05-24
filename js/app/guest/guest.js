@@ -331,7 +331,7 @@ export const guest = (() => {
         const token = document.body.getAttribute('data-key');
         const params = new URLSearchParams(window.location.search);
 
-        // document.addEventListener('undangan.progress.done', () => booting());
+        document.addEventListener('undangan.progress.done', () => booting());
         booting();
         document.addEventListener('hide.bs.modal', () => document.activeElement?.blur());
         document.getElementById('button-modal-download').addEventListener('click', (e) => {
