@@ -332,7 +332,6 @@ export const guest = (() => {
         const params = new URLSearchParams(window.location.search);
 
         document.addEventListener('undangan.progress.done', () => booting());
-        booting();
         document.addEventListener('hide.bs.modal', () => document.activeElement?.blur());
         document.getElementById('button-modal-download').addEventListener('click', (e) => {
             img.download(e.currentTarget.getAttribute('data-src'));
