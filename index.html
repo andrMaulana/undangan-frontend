@@ -667,8 +667,9 @@
         </div>
         <div class="text-center position-fixed w-100" style="bottom: 8%; left: 0;">
             <div class="d-flex flex-column">
-                <small class="text-secondary">from</small>
-                <small class="text-theme-auto"><i class="fa-brands fa-github me-1"></i>Andri Maulana</small>
+                <small class="text-secondary">Powered By</small>
+                <!-- <small class="text-theme-auto"><i class="fa-brands fa-github me-1"></i>Weeding of Dini Meilani & Fahrudin 💞</small> -->
+                <small class="text-theme-auto" id="poweredByName"><i class="fa-brands fa-github me-1"></i>Weeding of Dini Meilani & Fahrudin 💞</small>
             </div>
         </div>
     </div>
@@ -697,4 +698,31 @@
     </div>
 </body>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestNameParam = urlParams.get('to');
+            const poweredByElement = document.getElementById('poweredByName');
+
+            if (guestNameParam && poweredByElement) {
+                // Decode URI component (misal %20 menjadi spasi)
+                let guestName = decodeURIComponent(guestNameParam);
+
+                // Opsional: Ubah nama menjadi format Title Case (setiap kata diawali huruf kapital)
+                guestName = guestName.toLowerCase().split(' ').map(word => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                }).join(' ');
+
+                // Ganti konten elemen, termasuk menghapus ikon GitHub jika ada
+                poweredByElement.innerHTML = guestName;
+            }
+            // Jika parameter 'to' tidak ada, teks default akan tetap ditampilkan.
+        } catch (error) {
+            console.error("Error updating powered by text:", error);
+            // Biarkan teks default jika terjadi error
+        }
+    });
+</script>
 </html>
